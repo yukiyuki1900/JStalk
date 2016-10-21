@@ -1,0 +1,1 @@
+#this,constructor和prototype
