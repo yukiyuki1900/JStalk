@@ -10,6 +10,7 @@
 ```
 
 ###增加数组元素
+注意以下操作原数组会发生改变
 ```
 	var arr = ['a', 'b', 'c'];
 	arr.push('d');   //在数组最后插入元素或数组，返回数组长度
@@ -19,6 +20,36 @@
 ![image](https://github.com/yukiyuki1900/JStalk/blob/master/array%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E4%B8%8E%E6%8A%80%E5%B7%A7/arr_add.png)
 
 ###删除数组元素
+注意以下操作原数组会发生改变
+```
+	var arr = ['a', 'b', 'c', 'd'];
+	arr.pop();   //删除数组最后的元素，返回该元素
+	arr.shift();  //删除数组最前面的元素，返回该元素
+	arr.splice(1, 1);   //在数组指定位置删除特定数量的元素，以数组格式返回被删除的元素
+```
+![image](https://github.com/yukiyuki1900/JStalk/blob/master/array%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E4%B8%8E%E6%8A%80%E5%B7%A7/arr_del.png)
+
+###数组截取与合并
+注意以下操作都不会改变原数组
+```
+	var arr = ['a', 'b', 'c', 'd'];
+	arr.slice(1, 3);  //截取从1到3之前（不包含3）的元素，以数组格式返回。**注意该方法不会修改原数组，如需要对原数组进行元素的删除，则可以选择使用splice。**
+
+	var arr2 = ['f'];
+	arr.concat(arr2);  // 合并两个数组，返回合并后的数组
+```
+![image](https://github.com/yukiyuki1900/JStalk/blob/master/array%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E4%B8%8E%E6%8A%80%E5%B7%A7/arr_con.png)
+
+###数组的排序
+注意以下操作原数组会发生改变
+```
+	var arr = [1, 2, 3, 4];
+	arr.reverse();    //数组翻转
+	arr.sort(function(a, b){     //数组由小到大排序
+		return a - b;
+	});
+```
+![image](https://github.com/yukiyuki1900/JStalk/blob/master/array%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E4%B8%8E%E6%8A%80%E5%B7%A7/arr_sort.png)
 
 ###清空数组
 把数组长度设为0就好了
