@@ -16,6 +16,7 @@
 	arr.unshift('e');  //在数组最前插入元素或数组，返回数组长度
 	arr.splice(1, 0, 'f');   //在数组指定位置插入元素或数组，返回[]
 ```
+![image](https://github.com/yukiyuki1900/JStalk/blob/master/array%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E4%B8%8E%E6%8A%80%E5%B7%A7/arr_add.png)
 
 ###删除数组元素
 
