@@ -33,7 +33,8 @@
 注意以下操作都不会改变原数组
 ```
 	var arr = ['a', 'b', 'c', 'd'];
-	arr.slice(1, 3);  //截取从1到3之前（不包含3）的元素，以数组格式返回。**注意该方法不会修改原数组，如需要对原数组进行元素的删除，则可以选择使用splice。**
+	arr.slice(1, 3);  //截取从1到3之前（不包含3）的元素，以数组格式返回。
+	//**注意该方法不会修改原数组，如需要对原数组进行元素的删除，则可以选择使用splice。**
 
 	var arr2 = ['f'];
 	arr.concat(arr2);  // 合并两个数组，返回合并后的数组
@@ -59,4 +60,46 @@
 ```
 
 ###遍历数组
-一般用两种
+```
+	var arr = ['a', 'b', 'c', 'd'];
+	//方法一
+	for(var i = 0 , len = arr.length ; i < len ; i ++) {
+		console.log(arr[i]);
+	}
+	//方法二，这个会有坑，还是少用比较好
+	for(var i in arr) {
+		console.log(arr[i])
+	}
+	//方法三，貌似IE中的array没有forEach方法
+	arr.forEach(function(e) {
+		console.log(e);
+	})
+```
+
+如果js扩展了原生的Array，使用for in也会遍历出来~
+```
+	//扩展了js原生的Array
+	Array.prototype.test = function(){
+		//...
+	}
+	for(var i in arr) {
+		console.log(arr[i]);
+	}
+
+```
+![image](https://github.com/yukiyuki1900/JStalk/blob/master/array%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E4%B8%8E%E6%8A%80%E5%B7%A7/arr_for1.png)
+
+可使用hasOwnProperty解决这个问题
+```
+	//扩展了js原生的Array
+	Array.prototype.test = function(){
+		//...
+	}
+	for(var i in arr) {
+		if (arr.hasOwnProperty(i)) {
+			console.log(arr[i]);
+        }
+	}
+
+```
+
