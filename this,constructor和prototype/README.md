@@ -1,6 +1,6 @@
-#this, constructor和prototype
+#this, prototype和constructor
 
-###this
+##this
 this表示当前的对象，可是由于    其运行时绑定的原因，JavaScript中的this会随着运行时的情况而变成不一样的值，全局对象、当前对象、或者是任意指定对象。
 
 ####全局作用域下的例子
@@ -84,7 +84,154 @@ foo.call(this, arg1,arg2,arg3) == foo.apply(this, arguments)==this.foo(arg1, arg
 ```
 
 
-###constructor
+##prototype
+
+* 每个函数都有一个默认的prototype属性，这个属性指向的是一个对象的引用。而对已每一个函数（类）的实例都会从prototype属性指向的对象上继承属性，换句话说通过同一个函数创建的所有对象都继承一个相同的对象，这个对象称之为构造函数
+* 通过new 关键字和构造函数创建的对象的原型，就是构造函数的prototype指向的那个对象
+* 这个使用function定义的对象与使用new 操作符生成的对象之间有一个重要的区别。这个区别就是**function定义的对象有一个prototype属性，使用new生成的对象就没有这个prototype属性**。
 
 
-###prototype
+```
+    // 构造函数
+    function Person(name) {
+        this.name = name;
+    }
+    // 定义Person的原型，原型中的属性可以被自定义对象引用
+    Person.prototype = {
+        getName: function() {
+            return this.name;
+        }
+    }
+    var hao= new Person("haorooms");
+    console.log(hao.getName());   // "haorooms"
+```
+
+JavaScript中的数据原型如字符串（String）、数字（Number）、数组（Array）、对象（Object）、日期（Date）等，都是基于构造函数来实现的。
+
+```
+    //声明一个数组
+    var arr = new Array('a', 'b', 'c');
+    //貌似一般习惯这样的数组声明
+    var arr1 = ['d', 'e', 'f'];
+
+    //使用Array的push函数
+    arr.push('g');
+
+    //为Array扩展一个函数
+    Array.prototype.min = function() {
+        //啦啦啦
+    }
+
+```
+
+##constructor
+
+constructor始终指向创建当前对象的构造函数
+
+```
+    // 等价于 var foo = new Array(1, 56, 34, 12);
+    var arr = [1, 56, 34, 12];
+    console.log(arr.constructor === Array); // true
+    // 等价于 var foo = new Function();
+    var Foo = function() { };
+    console.log(Foo.constructor === Function); // true
+    // 由构造函数实例化一个obj对象
+    var obj = new Foo();
+    console.log(obj.constructor === Foo); // true
+
+    // 将上面两段代码合起来，就得到下面的结论
+    console.log(obj.constructor.constructor === Function); // true
+```
+
+但是当constructor遇到prototype时，有趣的事情就发生了。 我们知道每个函数都有一个默认的属性prototype，而这个prototype的constructor默认指向这个函数。如下例所示：
+
+```
+    function Person(name) {
+        this.name = name;
+    };
+    Person.prototype.getName = function() {
+        return this.name;
+    };
+    var p = new Person("haorooms");
+
+    console.log(p.constructor === Person);  // true
+    console.log(Person.prototype.constructor === Person); // true
+    // 将上两行代码合并就得到如下结果
+    console.log(p.constructor.prototype.constructor === Person); // true
+```
+
+但当我们重新定义函数的prototype时（注意：和上例的区别，这里不是修改而是覆盖）
+
+```
+    function Person(name) {
+        this.name = name;
+    };
+    Person.prototype = {
+        getName: function() {
+            return this.name;
+        }
+    };
+    var p = new Person("haorooms");
+    console.log(p.constructor === Person);  // false
+    console.log(Person.prototype.constructor === Person); // false
+    console.log(p.constructor.prototype.constructor === Person); // false
+```
+
+原因是当我们覆盖prototype的时候，实际发生的事情是这样：
+
+```
+    Person.prototype = new Object({
+        getName: function() {
+            return this.name;
+        }
+    });
+```
+
+所以此时的原型应该是Object
+
+```
+    function Person(name) {
+        this.name = name;
+    };
+    Person.prototype = {
+        getName: function() {
+            return this.name;
+        }
+    };
+    var p = new Person("haorooms");
+    console.log(p.constructor === Object);  // true
+    console.log(Person.prototype.constructor === Object); // true
+    console.log(p.constructor.prototype.constructor === Object); // true
+```
+
+怎么重新指向Person呢？重新赋值为Person就好啦
+
+```
+    function Person(name) {
+        this.name = name;
+    };
+    Person.prototype = {
+        getName: function() {
+            return this.name;
+        }
+    };
+    Person.prototype.constructor = Person;
+    var p = new Person("haorooms");
+    console.log(p.constructor === Person);  // true
+    console.log(Person.prototype.constructor === Person); // true
+    console.log(p.constructor.prototype.constructor === Person); // true
+```
+
+或者这样：
+
+```
+    function Person(name) {
+        this.name = name;
+    };
+    Person.prototype = {
+      constructor:Person,//指定constructor
+        getName: function() {
+            return this.name;
+        }
+    };
+```
