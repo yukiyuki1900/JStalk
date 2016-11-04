@@ -49,6 +49,12 @@ JSONP原理其实就是使用 **script** 标签，将参数和回调函数带到
 ###IFRAME
 
 ####原理
+window对象有个name属性，该属性有个特征：即在一个窗口(window)的生命周期内,窗口载入的所有的页面都是共享一个window.name的，每个页面对window.name都有读写的权限，window.name是持久存在一个窗口载入过的所有页面中的。
+所以实际上也是通过修改window.name来解决跨域
+
+####实现
+
+
 
 ###postMessage
 
@@ -64,9 +70,10 @@ HTML5中提供了window.postMessage这个API，可以用作客户端和客户端
 
 看了下[各浏览器兼容性](http://caniuse.com/#search=postMessage)，各浏览器支持度还不错，只要不用兼容IE6和IE7，可以考虑下使用postMessage
 
-比如一个页面中一部分能拿到数据（如iframe），另一个部分没法拿到这部分数据，但是却需要用到（如iframe的parent，也就是iframe的父节点），此时便可以使用postMessage来将这部分数据传给页面的这个部分。
+比如一个页面中一部分（如iframe）能拿到数据，另一个部分（如iframe的parent，也就是iframe的父节点）没法拿到这部分数据，但是却需要用到，此时便可以使用postMessage来将这部分数据传给页面的这个部分。
 
 不过解决跨域问题只是postMessage一个附带功能，它自带的数据传递功能本身也决定了它可以用作页面组件间的**数据传递与解耦**。
 
 ####实现
-
+```
+```
