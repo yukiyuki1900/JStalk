@@ -63,3 +63,10 @@ HTML5中提供了window.postMessage这个API，可以用作客户端和客户端
 * 上面三个问题的跨域数据传递
 
 看了下[各浏览器兼容性](http://caniuse.com/#search=postMessage)，各浏览器支持度还不错，只要不用兼容IE6和IE7，可以考虑下使用postMessage
+
+比如一个页面中一部分能拿到数据（如iframe），另一个部分没法拿到这部分数据，但是却需要用到（如iframe的parent，也就是iframe的父节点），此时便可以使用postMessage来将这部分数据传给页面的这个部分。
+
+不过解决跨域问题只是postMessage一个附带功能，它自带的数据传递功能本身也决定了它可以用作页面组件间的**数据传递与解耦**。
+
+####实现
+
