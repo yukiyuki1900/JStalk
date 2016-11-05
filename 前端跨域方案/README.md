@@ -58,7 +58,7 @@ window对象有个name属性，该属性有个特征：即在一个窗口(window
 
 ###postMessage
 
-HTML5中提供了window.postMessage这个API，可以用作客户端和客户端直接的数据传递，既可以跨域传递，也可以同域传递。
+HTML5中提供了window.postMessage这个API，可以用作客户端和客户端直接的数据传递，既可以跨域传递，也可以同域传递，是一个安全的跨源通信的方法。
 
 * 页面和其打开的新窗口的数据传递
 
@@ -70,10 +70,59 @@ HTML5中提供了window.postMessage这个API，可以用作客户端和客户端
 
 看了下[各浏览器兼容性](http://caniuse.com/#search=postMessage)，各浏览器支持度还不错，只要不用兼容IE6和IE7，可以考虑下使用postMessage
 
-比如一个页面中一部分（如iframe）能拿到数据，另一个部分（如iframe的parent，也就是iframe的父节点）没法拿到这部分数据，但是却需要用到，此时便可以使用postMessage来将这部分数据传给页面的这个部分。
-
-不过解决跨域问题只是postMessage一个附带功能，它自带的数据传递功能本身也决定了它可以用作页面组件间的**数据传递与解耦**。
+比如一个页面中一部分（如iframe）能拿到数据，另一个部分（如iframe的parent，也就是iframe的父节点）没法拿到这部分数据，但是却需要用到，此时便可以使用postMessage来将这部分数据传给页面的这个部分。所以可以用postMessage来跨域在不同窗口/iframe间发送数据。
 
 ####实现
+
+比如现在有个页面里内嵌了一个iframe
 ```
+	<div style="width:200px; float:left; margin-right:200px;border:solid 1px #333;">
+	    <div id="color">Frame Color</div>
+	</div>
+	<div>
+	    <iframe id="child" src="http://host.com/xMessage.html"></iframe>
+	</div>
 ```
+
+发送请求
+```
+	//通用格式
+	otherWindow.postMessage(message, targetOrigin);
+```
+* **otherWindow**：其他窗口的一个引用，比如iframe的contentWindow属性、执行window.open返回的窗口对象、或者是命名过或数值索引的window.frames。
+* **message**：传给其他window的数据
+* **targetOrigin**：指定能接收消息事件的窗口，如果不传，默认为'*'，不限制通信域
+
+这里有个函数帮忙可以获得，可以参考一下：
+```
+	var getContentWindow = function(obj) {
+	    /**
+	     * 如果是window对象，直接返回
+	     * eg. top, parent, window
+	     */
+	    if (isWindowObject(obj)) {
+	        return obj;
+	    }
+
+	    if ($.isString(obj)) {
+	        /*只返回选择器返回的第一个dom节点*/
+	        obj = document.querySelector(obj);
+	    }
+
+	    /*如果是iframe，获取contentWindow*/
+	    if (obj.nodeName === 'IFRAME') {
+	        return obj.contentWindow;
+	    }
+
+	    return obj;
+	};
+
+	var target = $("#child").get(0);
+	var otherWindow = getContentWindow(target);
+
+	otherWindow.postMessage(message, 'http://host.com/xMessage.html');
+
+	//当然这里也可以用window.frames+索引值来获得如
+	window.frames[0].postMessage(message, 'http://host.com/xMessage.html');
+```
+
