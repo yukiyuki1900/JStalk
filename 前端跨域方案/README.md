@@ -84,7 +84,7 @@ HTML5中提供了window.postMessage这个API，可以用作客户端和客户端
 	</div>
 ```
 
-发送请求
+发送数据
 ```
 	//通用格式
 	otherWindow.postMessage(message, targetOrigin);
@@ -93,8 +93,8 @@ HTML5中提供了window.postMessage这个API，可以用作客户端和客户端
 * **message**：传给其他window的数据
 * **targetOrigin**：指定能接收消息事件的窗口，如果不传，默认为'*'，不限制通信域
 
-这里有个函数帮忙可以获得，可以参考一下：
 ```
+	//帮忙获得window的函数，可以参考下
 	var getContentWindow = function(obj) {
 	    /**
 	     * 如果是window对象，直接返回
@@ -126,3 +126,26 @@ HTML5中提供了window.postMessage这个API，可以用作客户端和客户端
 	window.frames[0].postMessage(message, 'http://host.com/xMessage.html');
 ```
 
+接收数据
+接收域可监听'message'来获取数据
+```
+	window.addEventListener("message", function(e) {
+		// For Chrome, the origin property is in the event.originalEvent object.
+		var origin = event.origin || event.originalEvent.origin; 
+
+		//为了安全起见，对MessageEvent对象判断了一下消息源
+		if (event.origin !== "http://example.org:8080") {
+			return;
+		}
+		
+		console.log('message received:  ' + e.data,event);
+    	e.source.postMessage('holla back youngin!',e.origin);
+ 	}, false);
+```
+
+这里有几个重要的属性：
+	1. **data**：传递来的message
+	2. **source**：消息源，消息的发送窗口/iframe
+	3. **origin**：发送消息窗口的源（协议+主机+端口号）
+
+这样就可以跨域把数据发送和接收了
