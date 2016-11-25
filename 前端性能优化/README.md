@@ -17,14 +17,58 @@
 针对这些核心的性能指标，雅虎已经给出了常用的前端优化方案：[https://developer.yahoo.com/performance/](https://developer.yahoo.com/performance/)
 简单来说就是分为7个分类：
 
-|网页内容|服务器|Cookie|CSS|Javascript|图片|Mobile|
-|减少http请求|||||||
-|减少DNS查询次数|||||||
-|避免页面跳转|||||||
-|缓存Ajax response|||||||
-|延时加载|||||||
-|提前加载|||||||
-|减少DOM节点的数量|||||||
-|根据域名划分内容|||||||
-|减少iframe数量|||||||
-|避免404|||||||
+<table>
+	<tr>
+		<td>网页内容</td>
+		<td>服务器</td>
+		<td>Cookie</td>
+		<td>CSS</td>
+		<td>Javascript</td>
+		<td>图片</td>
+		<td>Mobile</td>
+	</tr>
+	<tr>
+		<td>减少http请求</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>减少DNS查询次数</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>避免页面跳转</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>避免页面跳转</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>缓存Ajax response</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>延时加载</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>提前加载</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>减少DOM节点的数量</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>根据域名划分内容</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>减少iframe数量</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>避免404</td>
+		<td></td>
+	</tr>
+</table>
