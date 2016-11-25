@@ -13,3 +13,18 @@
 
 用户对页面性能感知多出现在哪个环节上呢？
 ![image](https://github.com/yukiyuki1900/JStalk/blob/master/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E6%A0%B8%E5%BF%83%E6%8C%87%E6%A0%87.png)
+
+针对这些核心的性能指标，雅虎已经给出了常用的前端优化方案：[https://developer.yahoo.com/performance/](https://developer.yahoo.com/performance/)
+简单来说就是分为7个分类：
+
+|网页内容|服务器|Cookie|CSS|Javascript|图片|Mobile|
+|减少http请求|||||||
+|减少DNS查询次数|||||||
+|避免页面跳转|||||||
+|缓存Ajax response|||||||
+|延时加载|||||||
+|提前加载|||||||
+|减少DOM节点的数量|||||||
+|根据域名划分内容|||||||
+|减少iframe数量|||||||
+|避免404|||||||
