@@ -15,45 +15,46 @@
 ![image](https://github.com/yukiyuki1900/JStalk/blob/master/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E6%A0%B8%E5%BF%83%E6%8C%87%E6%A0%87.png)
 
 针对这些核心的性能指标，雅虎已经给出了常用的前端优化方案：[https://developer.yahoo.com/performance/](https://developer.yahoo.com/performance/)
+
 简单来说就是分为7个分类：
 
 <table>
 	<tr>
-		<td>网页内容</td>
-		<td>服务器</td>
-		<td>Cookie</td>
-		<td>CSS</td>
-		<td>Javascript</td>
-		<td>图片</td>
-		<td>Mobile</td>
+		<td><strong>网页内容</strong></td>
+		<td><strong>服务器</strong></td>
+		<td><strong>Cookie</strong></td>
+		<td><strong>CSS</strong></td>
+		<td><strong>Javascript</strong></td>
+		<td><strong>图片</strong></td>
+		<td><strong>Mobile</strong></td>
 	</tr>
 	<tr>
 		<td>减少http请求</td>
-		<td></td>
+		<td>使用CDN</td>
 	</tr>
 	<tr>
 		<td>减少DNS查询次数</td>
-		<td></td>
+		<td>使用Expires或Cache-Control报文头</td>
 	</tr>
 	<tr>
 		<td>避免页面跳转</td>
-		<td></td>
+		<td>Gzip压缩传输文件</td>
 	</tr>
 	<tr>
 		<td>避免页面跳转</td>
-		<td></td>
+		<td>配置Etags</td>
 	</tr>
 	<tr>
 		<td>缓存Ajax response</td>
-		<td></td>
+		<td>尽早Flush输出</td>
 	</tr>
 	<tr>
 		<td>延时加载</td>
-		<td></td>
+		<td>使用GET AJAX请求</td>
 	</tr>
 	<tr>
 		<td>提前加载</td>
-		<td></td>
+		<td>避免空的图片src</td>
 	</tr>
 	<tr>
 		<td>减少DOM节点的数量</td>
