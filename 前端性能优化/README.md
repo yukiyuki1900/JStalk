@@ -31,45 +31,104 @@
 	<tr>
 		<td>减少http请求</td>
 		<td>使用CDN</td>
+		<td>减少cookie大小</td>
+		<td>将CSS文件置顶</td>
+		<td>将script脚本放在页面底部</td>
+		<td>优化图片</td>
+		<td>使单个内容小于25Kb</td>
 	</tr>
 	<tr>
 		<td>减少DNS查询次数</td>
 		<td>使用Expires或Cache-Control报文头</td>
+		<td>页面内容使用无cookie域名</td>
+		<td>避免CSS表达式</td>
+		<td>使用外部的JavaScript或css文件</td>
+		<td>优化CSS sprite</td>
+		<td>Pack Components into a Multipart Document</td>
 	</tr>
 	<tr>
 		<td>避免页面跳转</td>
 		<td>Gzip压缩传输文件</td>
+		<td></td>
+		<td>使用link取代@import</td>
+		<td>精简JavaScript和css文件</td>
+		<td>不在html中缩放图片</td>
+		<td></td>
 	</tr>
 	<tr>
 		<td>避免页面跳转</td>
 		<td>配置Etags</td>
+		<td></td>
+		<td>避免使用filters</td>
+		<td>去掉重复的脚本</td>
+		<td>使favicon.ico尽可能小而且可缓存</td>
+		<td></td>
 	</tr>
 	<tr>
 		<td>缓存Ajax response</td>
 		<td>尽早Flush输出</td>
+		<td></td>
+		<td></td>
+		<td>减少DOM访问</td>
+		<td></td>
+		<td></td>
 	</tr>
 	<tr>
 		<td>延时加载</td>
 		<td>使用GET AJAX请求</td>
+		<td></td>
+		<td></td>
+		<td>使用智能事件处理</td>
+		<td></td>
+		<td></td>
 	</tr>
 	<tr>
 		<td>提前加载</td>
 		<td>避免空的图片src</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
 	</tr>
 	<tr>
 		<td>减少DOM节点的数量</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
 		<td></td>
 	</tr>
 	<tr>
 		<td>根据域名划分内容</td>
 		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
 	</tr>
 	<tr>
 		<td>减少iframe数量</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
 		<td></td>
 	</tr>
 	<tr>
 		<td>避免404</td>
 		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
 	</tr>
 </table>
+
+### 可优化的点
+
+* **查询DNS**：
