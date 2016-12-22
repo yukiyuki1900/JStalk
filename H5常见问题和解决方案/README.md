@@ -16,7 +16,8 @@
 
 	CSS像素为独立像素
 	![image](https://github.com/yukiyuki1900/JStalk/blob/master/H5%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/pixels-1.png)
-
+	
+	所以，**640px宽度在dpr=2的屏幕上宽度是320px**
 
 ### Meta 基础知识
 
