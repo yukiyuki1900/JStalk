@@ -7,6 +7,17 @@
 * 设备像素比
 	设备像素比即 **window.devicePixelRatio**，是设备上物理像素和设备独立像素(device-independent pixels (dips))的比例。可以看下浏览器的兼容性，[http://caniuse.com/#search=window.devicePixelRatio](http://caniuse.com/#search=window.devicePixelRatio)，为所有的webkit内核的浏览器所兼容。
 
+	**window.devicePixelRatio = 物理像素 / 独立像素（dips）**
+
+	怎么去理解物理像素和独立像素的区别呢？物理像素是机器像素，和机器屏幕的密度有关，可以用来辅助判断到底是不是retina屏，而我们写css的时候的px是独立像素
+
+	非retina屏和retina屏的物理像素
+	![image]()
+
+	CSS像素为独立像素
+	![image]()
+
+
 ### Meta 基础知识
 
 * H5页面窗口自动调整到设备宽度，并禁止用户缩放页面
