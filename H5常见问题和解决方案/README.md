@@ -12,10 +12,10 @@
 	怎么去理解物理像素和独立像素的区别呢？物理像素是机器像素，和机器屏幕的密度有关，可以用来辅助判断到底是不是retina屏，而我们写css的时候的px是独立像素
 
 	非retina屏和retina屏的物理像素
-	![image]()
+	![image](https://github.com/yukiyuki1900/JStalk/blob/master/H5%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/pixels.png)
 
 	CSS像素为独立像素
-	![image]()
+	![image](https://github.com/yukiyuki1900/JStalk/blob/master/H5%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/pixels-1.png)
 
 
 ### Meta 基础知识
