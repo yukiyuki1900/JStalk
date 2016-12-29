@@ -18,7 +18,9 @@ ECMAScript6提供了Promise对象，这个对象是抽象的异步处理的对�
 
 ### 创建promise对象
 流程如下：
+
 1. **new Promise(fn)** 返回一个promise对象
+
 2. 在**fn** 中指定异步等处理
 	* 处理结果正常的话，调用 **resolve（处理结果的值）**
 	* 处理结果错误的话，调用 **reject（Error对象）**
