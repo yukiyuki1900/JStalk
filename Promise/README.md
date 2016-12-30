@@ -178,7 +178,7 @@ promise规范上规定promise只能用异步调用的方式
 	}
 
 	function output(value) { 
-		console.log(value);// => (1 + 1) * 2
+		console.log(value);		// => (1 + 1) * 2
 	}
 
 	var promise = Promise.resolve(1); 
@@ -195,3 +195,21 @@ promise规范上规定promise只能用异步调用的方式
 
 代码的入口是**Promise.resolve(1)**，最后打印出来的结果是4
 
+### 其他api
+
+* **Promis.all**：接收一个 promise对象的数组作为参数,当这个数组里的所有promise对象 全部变为resolve或reject状态的时候,它才会去调用 .then 方法。返回一个promise对象
+```
+	Promise
+		.all([promiseA, promiseB])
+		.then(function(value) {
+			console.log(value);
+		});
+```
+
+* **Promise.race**：和**Promis.all** 一样接收一个 promise对象的数组作为参数，但只要有其中一个promise对象变为resolve或reject状态就会去调用 .then 方法。返回一个promise对象
+
+
+### [jQuery.deferred](http://api.jquery.com/category/deferred-object/)
+不管事jQuery还是zepto都对promise进行了封装，能更简单方便的使用promise提供的各种便利。
+
+具体可见另一篇文章：
