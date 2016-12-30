@@ -87,7 +87,7 @@ ECMAScript6提供了Promise对象，这个对象是抽象的异步处理的对�
 
 在对promise对象进行初始化或编写测试代码的时候都很方便。
 
-### Thenable
+### Thenable对象
 **Promise.resolve** 方法另一个作用就是将 thenable 对象转换为promise对象。
 
 thenable 指的就是一个具有 **.then**方法的对象。就像有时候我们将具有 **.length** 方法的非数组对象成为 Array like一样。
@@ -106,4 +106,92 @@ thenable 指的就是一个具有 **.then**方法的对象。就像有时候我�
 		console.log(value); 
 	});
 ```
+
+### 异步调用
+promise规范上规定promise只能用异步调用的方式
+
+比如以下代码：
+```
+	var promise = new Promise(function (resolve){ 
+		console.log("inner promise"); // 1 resolve(42);
+	}); 
+
+	promise.then(function(value){
+		console.log(value); // 3 
+	});
+
+	console.log("outer promise"); // 2
+```
+
+在控制台的输出是：
+```
+	inner promise      //1
+	outer promise      //2
+	42                 //3
+```
+
+代码会按照文件从从上到下执行。
+
+因为 **.then** 注册回调函数的时候promise对象已经是确定的状态，所以promise会以异步的方式调用这个回调函数。
+
+### 方法链
+在promise里可以将任意个方法连在一起形成一个方法链 **.then().catch()**
+```
+	function taskA() { 
+		console.log("Task A");
+	}
+
+	function taskB() {
+		console.log("Task B"); 
+	}
+
+	function onRejected(error) { 
+		console.log("Catch Error: A or B", error);
+	}
+
+	function finalTask() {
+		console.log("Final Task"); 
+	}
+
+	var promise = Promise.resolve(); 
+
+	promise
+		.then(taskA) 
+		.then(taskB) 
+		.catch(onRejected) 
+		.then(finalTask);
+```
+
+如果以上taskA和taskB执行返回正常的话，该promise chain执行顺序为： taskA() -> taskB() -> finalTask()
+
+如果taskA出现了异常，则执行顺序为taskA() -> onRejected() -> finalTask(), 不会执行taskB()
+
+#### 方法链中的参数传递
+通过return的方式传递参数
+```
+	function doubleUp(value) { 
+		return value * 2;
+	}
+
+	function increment(value) {
+		return value + 1; 
+	}
+
+	function output(value) { 
+		console.log(value);// => (1 + 1) * 2
+	}
+
+	var promise = Promise.resolve(1); 
+	promise
+		.then(increment) 
+		.then(doubleUp) 
+		.then(output) 
+		.catch(function(error){
+	￼￼￼		// promise chain中出现异常的时候会被调用
+			console.error(error); 
+		});
+
+```
+
+代码的入口是**Promise.resolve(1)**，最后打印出来的结果是4
 
