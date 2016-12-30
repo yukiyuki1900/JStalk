@@ -210,6 +210,6 @@ promise规范上规定promise只能用异步调用的方式
 
 
 ### [jQuery.deferred](http://api.jquery.com/category/deferred-object/)
-不管事jQuery还是zepto都对promise进行了封装，能更简单方便的使用promise提供的各种便利。
+不管是jQuery还是zepto都对promise进行了封装，能更简单方便的使用promise提供的各种便利。
 
 具体可见另一篇文章：
