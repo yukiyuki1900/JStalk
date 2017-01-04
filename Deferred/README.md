@@ -81,7 +81,7 @@ $.resolve & $.done()
 	dfd.resolve( "and" );
 ```
 执行结果：
-![image]()
+![image](https://github.com/yukiyuki1900/JStalk/blob/master/Deferred/deferred-resolve.png)
 
 
 $.when()
