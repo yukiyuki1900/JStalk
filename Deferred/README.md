@@ -9,7 +9,14 @@
 
 Deferred除了会提供像promise的一些方法和属性之外，它也可以返回一个promise对象**deferred.promise()**，具体promise的用法可见文章[Promise](https://github.com/yukiyuki1900/JStalk/tree/master/Promise)
 
-### $.ajax()返回的对象与Deferred的关系
+### Deferred与promise的关系
+
+简单来说关系是这样的：
+* **Deferred拥有Promise**  我们可以通过**deferred.promise()**来返回一个promise对象
+* **Deferred 具备对 Promise的状态进行操作的特权方法**
+
+
+### Deferred与$.ajax()返回的对象的关系
 
 我们很容易发现在jQuery里**$.ajax**返回的对象和deferred拥有了很多相似的函数与属性，那$.ajax()返回的是deferred对象吗？
 
@@ -23,3 +30,77 @@ Deferred除了会提供像promise的一些方法和属性之外，它也可以�
 
 在文章中摘录的那一段话的下一段，解释了为什么不返回一个完整的deferred对象。那是因为，如果返回完整的deferred对象，那么外部程序就能随意的触发deferred对象的回调函数，很有可能在AJAX请求结束前就触发了回调函数（resolve），这就是与AJAX本身的逻辑相违背了。 
 所以为了避免不经意间改变任务的内部流程，我们应该只返回deferred的只读版本（dfd.promise()）
+
+### 使用
+[jQuery的deferred文档](http://api.jquery.com/category/deferred-object/)里列出了deferred的所有API，具体可以在这里查。
+
+在日常开发中感觉会常用到的几个API
+```
+	//指定回调函数
+	.then( doneCallbacks, failedCallbacks )
+
+	//$.when()接受多个deferred对象作为参数，当它们全部运行成功后，才调用resolved状态的回调函数
+	//但只要其中有一个失败，就调用rejected状态的回调函数
+	.when( deferredOBJ, deferredOBJ )
+
+	//操作成功后的回调函数
+	.done( doneCallbacks )
+
+	//操作失败后的回调函数
+	.fail( failCallbacks )
+
+	//改变deferred的状态，一旦.resolve()被调用，则会依次执行.done()和.then()里指定的成功回调函数
+	//.done()和.then()指定的回调函数参数由 .resolve()传入
+	.resolve()
+
+	//改变deferred的状态，一旦.reject()被调用，则会依次执行.fail()和.then()里指定的失败回调函数
+	//.fail()和.then()指定的回调函数参数由 .reject()传入
+	.reject()   
+```
+
+$.resolve & $.done()
+```
+	function fn1() {
+		console.log(" 1 ");
+	}
+	function fn2() {
+		console.log(" 2 ");
+	}
+	function fn3( n ) {
+		console.log(n + " 3 " + n);
+	}
+
+	var dfd = $.Deferred();
+ 
+	dfd
+	  	.done( [ fn1, fn2 ], fn3, [ fn2, fn1 ] )
+		.done(function( n ) {
+			console.log( n + " we're done." );
+		});
+
+	dfd.resolve( "and" );
+```
+执行结果：
+![image]()
+
+
+$.when()
+```
+	function getData() {
+		//返回一个deferred对象
+		return $.get('/foo/');
+	}
+
+	function showDiv() {
+		//创建一个deferred对象
+		var dfd = $.Deferred();
+
+		$('#foo').fadeIn( 1000, dfd.resolve );
+
+		return dfd.promise();
+	}
+
+	$.when( getData(), showDiv() ).done(function( ajaxResult ) {
+	  	console.log('The animation AND the AJAX request are both done!');
+	});
+```
