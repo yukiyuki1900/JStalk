@@ -146,6 +146,7 @@ ES6是ECMA Script6的缩写，也就是JavaScript的第6个版本标准，因为
 
 #### template string
 在往页面dom节点插入代码的时候我们经常都是用 **+** 号将需要插入的html作为一个字符串插入到html中，又或者使用各种js模板工具来辅助实现。比如：
+
 ``
 	$("#result").append(
 		"There are <b>" + basket.count + "</b> " +
@@ -156,6 +157,7 @@ ES6是ECMA Script6的缩写，也就是JavaScript的第6个版本标准，因为
 ``
 
 在es6中，我们可以通过使用**``**来实现模板字符串的插入
+
 ``
 	$("#result").append(`
 		There are <b>${basket.count}</b> 
@@ -164,6 +166,56 @@ ES6是ECMA Script6的缩写，也就是JavaScript的第6个版本标准，因为
 	`);
 ``
 
+#### arrow function
+在es6，arrow是一个函数声明的简洁快捷的语法方式。
+
+```
+	function(i){ return i + 1; } //ES5
+	(i) => i + 1 //ES6
+```
+
+是不是超级方便？通过使用**=>**就能完成一个函数的声明。
+
+```
+	// ES5实现
+	nums.forEach(function (v) {
+	   if (v % 5 === 0)
+	       fives.push(v);
+	});
+
+	// ES6实现
+	nums.forEach(v => {
+	   if (v % 5 === 0)
+	       fives.push(v)
+	})
+```
+
+需要注意的是，在arrow function里的this指向的是定义时所在的对象哦，举个例子，比如在setTimeout或forEach等函数内部，this指向的是全局变量window，传统的解决方案要不就是在函数将this传给一个变量，要不就是将this作为参数传入函数内。
+
+```
+	// ES5实现
+	// 实现一
+	var self = this;
+	this.nums.forEach(function (v) {
+	    if (v % 5 === 0)
+	        self.fives.push(v);
+	});
+
+	// 实现二
+	this.nums.forEach(function (v) {
+	    if (v % 5 === 0)
+	        this.fives.push(v);
+	}, this);
+
+
+	// ES6实现
+	this.nums.forEach((v) => {
+	    if (v % 5 === 0)
+	        this.fives.push(v)
+	})
+```
+
 ### 参考材料
+* [http://es6-features.org](http://es6-features.org/#StatementBodies)
 * [jQuery UK - EcmaScript 6](https://docs.google.com/presentation/d/1PvAHvODY_L3AiumgyjNFl4IPr82dq74vJxmMPOeU8uE/edit#slide=id.g68f6b382e_0118)
 * [learn-es2015](http://babeljs.cn/docs/learn-es2015)
