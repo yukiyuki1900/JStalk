@@ -144,6 +144,26 @@ ES6是ECMA Script6的缩写，也就是JavaScript的第6个版本标准，因为
 	});      // 3,4,2
 ```
 
+#### template string
+在往页面dom节点插入代码的时候我们经常都是用 **+** 号将需要插入的html作为一个字符串插入到html中，又或者使用各种js模板工具来辅助实现。比如：
+``
+	$("#result").append(
+		"There are <b>" + basket.count + "</b> " +
+		"items in your basket, " +
+		"<em>" + basket.onSale + 
+		"</em> are on sale!"
+	);
+``
+
+在es6中，我们可以通过使用**``**来实现模板字符串的插入
+``
+	$("#result").append(`
+		There are <b>${basket.count}</b> 
+		items in your basket, <em>${basket.onSale}</em>
+		are on sale!
+	`);
+``
+
 ### 参考材料
 * [jQuery UK - EcmaScript 6](https://docs.google.com/presentation/d/1PvAHvODY_L3AiumgyjNFl4IPr82dq74vJxmMPOeU8uE/edit#slide=id.g68f6b382e_0118)
 * [learn-es2015](http://babeljs.cn/docs/learn-es2015)
