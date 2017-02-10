@@ -10,9 +10,20 @@
 
 * npm，bower
 
+### fis
+
+百度内部很多项目都是基于fis，fis有
+
+### webpack、browserify 
 
 
-### npm，bower
+### [babel](http://babeljs.cn/)
+
+babel是一个JavaScript的一个语法编译器，因为babel自带了一组ES6的语法转化器，能将ES6转化为ES5，所以一般使用ES6来开发的项目都会选择babel来对代码进行编译，使得代码能被所有浏览器兼容。ES6相关文章可见[ES6新特性](https://github.com/yukiyuki1900/JStalk/tree/master/ES6%E6%96%B0%E7%89%B9%E6%80%A7)
+
+babel还提供了一个[在线编辑器](https://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=false&presets=es2015%2Creact%2Cstage-2&targets=&browsers=&builtIns=false&code=let%20a%3B%0Aa%20%3D%200%3B)，可以在线将ES6的代码转化为ES5的代码。
+
+### npm、bower
 
 npm和bower都是包管理工具，npm是node的包管理工具，bower是前端包管理工具，用来安装管理一些可重用的框架/库/组件，解决包和包之间的依赖关系（基于版本的管理）
 
