@@ -9,6 +9,11 @@
 * babel 
 
 * npm，bower
+
+
+
+### npm，bower
+
 npm和bower都是包管理工具，npm是node的包管理工具，bower是前端包管理工具，用来安装管理一些可重用的框架/库/组件，解决包和包之间的依赖关系（基于版本的管理）
 
 **bower目前还在维护**，并不是社区上有些人说的bower停止维护，bower官网也有blog解释了->[https://bower.io/blog/2015/bower-alive-looking-contributors/](https://bower.io/blog/2015/bower-alive-looking-contributors/)
@@ -45,4 +50,4 @@ bower的模块文件结构
 
 但是在npm3里，模块的依赖关系已经不是嵌套性的了，具体可以见官网的文档[https://docs.npmjs.com/how-npm-works/npm3](https://docs.npmjs.com/how-npm-works/npm3)
 
-![image]()
+![image](https://github.com/yukiyuki1900/JStalk/blob/master/%E5%89%8D%E7%AB%AF%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/npmv3.png)
