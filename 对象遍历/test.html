@@ -6,7 +6,81 @@
 </head>
 <body>
     <script>
+
+    var arr = [1, 2, 3]
+    // for(var i = 0 , len = arr.length ; i < len  ; i ++) {
+    //     console.log(arr[i]);
+    // }
+    // for(var i in arr) {
+    //     console.log(arr[i]);
+    // }
+
+    var obj = {
+        x: 1,
+        y: 2,
+        z: 3
+    }
+    // for(var i in obj) {
+    //     console.log(obj[i]);
+    // }
+
+    //原型链上增加属性
+    Object.prototype.set1 = 'setobj';
+    Array.prototype.set2 = 'setarray';
+
+    // for(var i = 0 , len = arr.length ; i < len  ; i ++) {
+    //     console.log(arr[i]);
+    // }
+    // for(var i in arr) {
+    //     console.log(arr[i]);
+    // }
+    // for(var i in obj) {
+    //     console.log(obj[i]);
+    // }
+
+    //加hasOwnProperty过滤
+    // for(var i in arr) {
+    //     if(arr.hasOwnProperty(i)) {
+    //         console.log(arr[i]);
+    //     }
+    // }
+    // for(var i in obj) {
+    //     if(obj.hasOwnProperty(i)) {
+    //         console.log(obj[i]);
+    //     }
+    // }
+
+    //forEach
+    arr.forEach(function (item, index, array) {
+        console.log(index + ' ' + item);
+    })
+
+    //filter
+    var filterarr = arr.filter(function (item, index, array) {
+        return item%2 == 1
+    })
+    console.log(filterarr);  //输出[1, 3]
+
+    //map
+    var maparr = arr.map(function (item, index, array) {
+        return item*2
+    })
+    console.log(maparr);  //输出[2, 4, 6]
+
+    //every
+    var everybool = arr.every(function (item, index, array) {
+        return item>2
+    })
+    console.log(everybool);  //输出false
+
+    //some
+    var somebool = arr.some(function (item, index, array) {
+        return item>2
+    })
+    console.log(somebool);  //输出true
+
     
+
     </script>
 </body>
 </html>
