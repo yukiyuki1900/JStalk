@@ -22,4 +22,53 @@
 
 所以，我们在这里讨论的是如何创建一个对象的副本。
 
+相关文章[对象遍历](https://github.com/yukiyuki1900/JStalk/tree/master/%E5%AF%B9%E8%B1%A1%E9%81%8D%E5%8E%86)
 
+复制的话分两种，一种是浅复制，也就是所有嵌套的对象和数组都是只是复制了引用，并不是复制里面的值。而深复制则是完全复制了一个新的对象副本。
+
+### Object的深浅复制
+
+这是一个对象的浅复制实现：
+
+```
+    obja = {
+        x: 11,
+        y: 22,
+        z: {
+            m: 44,
+            n: 55
+        }
+    }
+
+    //浅复制
+    var shadowObj = shadowCopy(obja);
+
+    function shadowCopy (obj) {
+        var dist = {};
+
+        for(var i in obj) {
+            if(obj.hasOwnProperty(i)) {
+                dist[i] = obj[i];
+            }
+        }
+
+        return dist;
+    }
+
+```
+
+在代码中，只是对对象的第一层属性进行依次遍历复制，而因为js的对象是引用存储，所以浅复制会导致obja.z和shadowObj.z所指向的是一个内存地址，一旦其中一个对象的值发生改变，也会引起另一个对象的值发生改变。
+
+下面是一个对象的深复制实现：
+```
+    var deepObj1 = deepCopy1(obja);
+    function deepCopy1(obj) {
+        var dist = JSON.stringify(obj);
+
+        return JSON.parse(dist);
+    }
+
+```
+这是利用字符串来实现对象的深复制。但是如果对象中含有function，JSON.stringify会自动过滤掉，没法复制函数。
+
+### Array的深浅复制

@@ -14,6 +14,44 @@
     var objb = obja;
     objb.x = 33;
     console.log(obja.x);    // 33
+
+
+    obja = {
+        x: 11,
+        y: 22,
+        z: {
+            m: 44,
+            n: 55
+        },
+        d: function() {}
+    }
+
+    //浅复制
+    var shadowObj = shadowCopy(obja);
+
+    function shadowCopy (obj) {
+        var dist = {};
+
+        for(var i in obj) {
+            if(obj.hasOwnProperty(i)) {
+                dist[i] = obj[i];
+            }
+        }
+
+        return dist;
+    }
+
+
+    var deepObj1 = deepCopy1(obja);
+    function deepCopy1(obj) {
+        var dist = JSON.stringify(obj);
+
+        return JSON.parse(dist);
+    }
+
+    console.log(deepObj1)
+    
+    
     </script>
 </body>
 </html>
