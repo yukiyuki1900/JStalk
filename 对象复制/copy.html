@@ -7,50 +7,87 @@
 <body>
     <script>
     //objab = obja
-    var obja = {
-        x: 11,
-        y: 22
+    // var obja = {
+    //     x: 11,
+    //     y: 22
+    // }
+    // var objb = obja;
+    // objb.x = 33;
+    // console.log(obja.x);    // 33
+
+
+    // obja = {
+    //     x: 11,
+    //     y: 22,
+    //     z: {
+    //         m: 44,
+    //         n: 55
+    //     },
+    //     d: function() {
+    //         console.log(111);
+    //     }
+    // }
+
+    // //浅复制
+    // var shadowObj = shadowCopy(obja);
+
+    // function shadowCopy (obj) {
+    //     var dist = {};
+
+    //     for(var i in obj) {
+    //         if(obj.hasOwnProperty(i)) {
+    //             dist[i] = obj[i];
+    //         }
+    //     }
+
+    //     return dist;
+    // }
+
+
+    // function deepCopy1(obj) {
+    //     var dist = JSON.stringify(obj);
+
+    //     return JSON.parse(dist);
+    // }
+    // var deepObj1 = deepCopy1(obja);
+
+    // console.log(deepObj1)
+
+    // function deepCopy2(obj) {
+    //     var dist = obj.constructor === Array ? [] : {};
+
+    //     if(typeof obj !== 'object') {
+    //         return;
+    //     }else {
+    //         for(var i in obj) {
+    //             if(obj.hasOwnProperty(i)) {
+    //                 dist[i] = typeof obj[i] === 'object' ? deepCopy2(obj[i]) : obj[i];
+    //             }
+    //         }
+    //     }
+
+    //     return dist;
+    // }
+    // var deepObj2 = deepCopy2(obja);
+
+    // deepObj2.d = function() {
+    //     console.log(222);
+    // }
+
+    // obja.d();
+    // deepObj2.d();
+
+
+    var arra = ['a', 'b', [3, 4], function() { console.log('arra')}];
+
+    var arrb = arra.slice();
+
+    arrb[3] = function() {
+        console.log('arrb');
     }
-    var objb = obja;
-    objb.x = 33;
-    console.log(obja.x);    // 33
 
-
-    obja = {
-        x: 11,
-        y: 22,
-        z: {
-            m: 44,
-            n: 55
-        },
-        d: function() {}
-    }
-
-    //浅复制
-    var shadowObj = shadowCopy(obja);
-
-    function shadowCopy (obj) {
-        var dist = {};
-
-        for(var i in obj) {
-            if(obj.hasOwnProperty(i)) {
-                dist[i] = obj[i];
-            }
-        }
-
-        return dist;
-    }
-
-
-    var deepObj1 = deepCopy1(obja);
-    function deepCopy1(obj) {
-        var dist = JSON.stringify(obj);
-
-        return JSON.parse(dist);
-    }
-
-    console.log(deepObj1)
-    
+    arra[3]();    // 'arra'
+    arrb[3]();    // 'arrb'
     
     </script>
 </body>

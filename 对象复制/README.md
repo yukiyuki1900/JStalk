@@ -69,6 +69,69 @@
     }
 
 ```
-这是利用字符串来实现对象的深复制。但是如果对象中含有function，JSON.stringify会自动过滤掉，没法复制函数。
+这是利用字符串来实现对象的深复制。但是这种方法能正确处理的对象只有Number，String，Boolean，Array等能够被json直接表示的数据结构，如果对象中含有function，JSON.stringify会自动过滤掉，没法复制函数。
+
+可以将对象看作为一个树结构，然后再进行深度优先遍历，复制对象。
+
+```
+    var obja = {
+        x: 11,
+        y: 22,
+        z: {
+            m: 44,
+            n: 55
+        },
+        d: function() {
+            console.log(111);
+        }
+    };
+
+    function deepCopy2(obj) {
+        var dist = obj.constructor === Array ? [] : {};
+
+        if(typeof obj !== 'object') {
+            return;
+        }else {
+            for(var i in obj) {
+                if(obj.hasOwnProperty(i)) {
+                    dist[i] = typeof obj[i] === 'object' ? deepCopy2(obj[i]) : obj[i];
+                }
+            }
+        }
+
+        return dist;
+    }
+    var deepObj2 = deepCopy2(obja);
+
+    deepObj2.d = function() {
+        console.log(222);
+    }
+
+    obja.d();    // 111
+    deepObj2.d();   // 111
+
+```
+
+这个解决方法用了递归，如果遇到对象则进入对象进行复制，但是也有一些不完美的地方，比如它并没有解决存在环的问题。
 
 ### Array的深浅复制
+
+Array的浅复制和Object的浅复制一样，都是直接复制引用，没有真正的实现一个数组的副本。
+
+Array的深复制可以直接用slice方法，返回一个新数组：
+
+```
+    var arra = ['a', 'b', [3, 4], function() { console.log('arra')}];
+
+    var arrb = arra.slice();
+
+    arrb[3] = function() {
+        console.log('arrb');
+    }
+
+    arra[3]();    // 'arra'
+    arrb[3]();    // 'arrb'
+
+```
+
+
