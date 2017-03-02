@@ -86,9 +86,9 @@ foo.call(this, arg1,arg2,arg3) == foo.apply(this, arguments)==this.foo(arg1, arg
 
 ##prototype
 
-* 每个函数都有一个默认的prototype属性，这个属性指向的是一个对象的引用。而对已每一个函数（类）的实例都会从prototype属性指向的对象上继承属性，换句话说通过同一个函数创建的所有对象都继承一个相同的对象，这个对象称之为构造函数
+* 每个函数都有一个默认的prototype属性，这个属性是一个指针，指向一个对象。而对于每一个函数（类）的实例都会从prototype属性指向的对象上继承属性，换句话说通过同一个函数创建的所有对象都继承一个相同的对象，共享改对象所包含的属性和方法。
 * 通过new 关键字和构造函数创建的对象的原型，就是构造函数的prototype指向的那个对象
-* 这个使用function定义的对象与使用new 操作符生成的对象之间有一个重要的区别。这个区别就是**function定义的对象有一个prototype属性，使用new生成的对象就没有这个prototype属性**。
+* 对于实例可以共享的信息，可以不必在构造函数中定义对象实例的信息，而是将信息直接添加在原型对象中。
 
 
 ```
@@ -98,13 +98,19 @@ foo.call(this, arg1,arg2,arg3) == foo.apply(this, arguments)==this.foo(arg1, arg
     }
     // 定义Person的原型，原型中的属性可以被自定义对象引用
     Person.prototype = {
+        age: 18,
         getName: function() {
             return this.name;
         }
     }
-    var hao= new Person("haorooms");
-    console.log(hao.getName());   // "haorooms"
+    var person= new Person("yuki");
+    console.log(person.age);      //18
+    console.log(person.getName());   // "yuki"
 ```
+
+不管什么时候，如果创建一个新的函数，都会为这个函数创建一个prototype的属性，指向函数的原型对象。而每个原型对象都会默认获得一个**constructor（构造函数）**的属性，这个**constructor**的属性指向prototype所在的函数的指针。在上面的例子上，Person.prototype.contructor 指向 Person。下图为构造函数，prototype和对象实例的关系。
+
+![image]()
 
 JavaScript中的数据原型如字符串（String）、数字（Number）、数组（Array）、对象（Object）、日期（Date）等，都是基于构造函数来实现的。
 
