@@ -110,7 +110,7 @@ foo.call(this, arg1,arg2,arg3) == foo.apply(this, arguments)==this.foo(arg1, arg
 
 不管什么时候，如果创建一个新的函数，都会为这个函数创建一个prototype的属性，指向函数的原型对象。而每个原型对象都会默认获得一个**constructor（构造函数）**的属性，这个**constructor**的属性指向prototype所在的函数的指针。在上面的例子上，Person.prototype.contructor 指向 Person。下图为构造函数，prototype和对象实例的关系。
 
-![image]()
+![image](https://github.com/yukiyuki1900/JStalk/blob/master/this%2Cconstructor%E5%92%8Cprototype/prototype1.png)
 
 JavaScript中的数据原型如字符串（String）、数字（Number）、数组（Array）、对象（Object）、日期（Date）等，都是基于构造函数来实现的。
 
