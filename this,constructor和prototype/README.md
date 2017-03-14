@@ -135,7 +135,7 @@ bind是es5.1对Function对象扩展的一个函数，扩展函数声明为： ``
     }
 ```
 
-细心的观众朋友可能发现了，**Array.prototype.slice.call**是干嘛的呢？其实这是将类数组转化成真实数组方法，具体可见[函数内属性arguments]()
+细心的观众朋友可能发现了，**Array.prototype.slice.call**是干嘛的呢？其实这是将类数组转化成真实数组方法，具体可见[函数内属性arguments](https://github.com/yukiyuki1900/JStalk/tree/master/%E5%87%BD%E6%95%B0%E5%86%85%E5%B1%9E%E6%80%A7arguments)
 
 
 ##prototype
