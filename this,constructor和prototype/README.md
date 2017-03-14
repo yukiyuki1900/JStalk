@@ -33,8 +33,9 @@ this的值是函数运行时决定的，而不是函数定时
 ```
 
 ####指定对象
-使用**apply**或者**call**来改变this的值
-一句话去吧apply和call的用法
+使用**apply**或者**call**或者**bind**都用可以来改变this的值，不过**apply**和**call**是直接执行函数，而**bind**是返回一个新的函数对象。
+
+一句话区别**apply**和**call**的用法
 
 ```
 foo.call(this, arg1,arg2,arg3) == foo.apply(this, arguments)==this.foo(arg1, arg2, arg3)
@@ -82,6 +83,59 @@ foo.call(this, arg1,arg2,arg3) == foo.apply(this, arguments)==this.foo(arg1, arg
     example(”背” , “光” , “脚”, “本”);
 
 ```
+
+**bind**
+
+bind是es5.1对Function对象扩展的一个函数，扩展函数声明为： ``Function.prototype.bind(thisArg [, arg1 [, arg2, …]])``，返回一个新的函数对象，该函数对象的this会绑定在``thisArg``参数上
+
+```
+    function locate(){
+      console.log(this.location);
+    }
+
+    function Maru(location){
+      this.location = location;
+    }
+
+    var kitty = new Maru("cardboard box");
+
+    var locateMaru = locate.bind(kitty);
+
+    locateMaru();  //cardboard box
+```
+
+```
+    var OOO = {
+        color: "#cd0000",
+        element: $("#text"),
+        events: function() {
+            $("input[type='button']").addEventListener("click", function(e) {
+                this.element.style.color = this.color;
+            }.bind(this));
+            return this;
+        },
+        init: function() {
+            this.events();
+        }
+    };
+```
+
+不过注意bind函数在ie6 ~ ie8都是不兼容的，如果要实现兼容，可声明bind函数
+
+```
+    if (!function() {}.bind) {
+        Function.prototype.bind = function(context) {
+            var self = this
+                , args = Array.prototype.slice.call(arguments);
+                
+            return function() {
+                return self.apply(context, args.slice(1));    
+            }
+        };
+    }
+```
+
+细心的观众朋友可能发现了，**Array.prototype.slice.call**是干嘛的呢？其实这是将类数组转化成真实数组方法，具体可见[函数内属性arguments]()
 
 
 ##prototype
