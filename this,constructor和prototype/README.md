@@ -1,6 +1,6 @@
-#this, prototype和constructor
+##this, prototype和constructor
 
-##this
+###this
 this表示当前的对象，可是由于    其运行时绑定的原因，JavaScript中的this会随着运行时的情况而变成不一样的值，全局对象、当前对象、或者是任意指定对象。
 
 ####全局作用域下的例子
@@ -138,7 +138,7 @@ bind是es5.1对Function对象扩展的一个函数，扩展函数声明为： ``
 细心的观众朋友可能发现了，**Array.prototype.slice.call**是干嘛的呢？其实这是将类数组转化成真实数组方法，具体可见[函数内属性arguments](https://github.com/yukiyuki1900/JStalk/tree/master/%E5%87%BD%E6%95%B0%E5%86%85%E5%B1%9E%E6%80%A7arguments)
 
 
-##prototype
+### prototype
 
 * 每个函数都有一个默认的prototype属性，这个属性是一个指针，指向一个对象。而对于每一个函数（类）的实例都会从prototype属性指向的对象上继承属性，换句话说通过同一个函数创建的所有对象都继承一个相同的对象，共享改对象所包含的属性和方法。
 * 通过new 关键字和构造函数创建的对象的原型，就是构造函数的prototype指向的那个对象
@@ -184,7 +184,7 @@ JavaScript中的数据原型如字符串（String）、数字（Number）、数�
 
 ```
 
-##constructor
+###constructor
 
 constructor始终指向创建当前对象的构造函数
 
