@@ -1,16 +1,16 @@
-##this, prototype和constructor
+## this, prototype和constructor
 
-###this
+### this
 this表示当前的对象，可是由于    其运行时绑定的原因，JavaScript中的this会随着运行时的情况而变成不一样的值，全局对象、当前对象、或者是任意指定对象。
 
-####全局作用域下的例子
+#### 全局作用域下的例子
 ```
     console.log(this === window);  // true
     console.log(window.alert === this.alert);  // true
     console.log(this.parseInt("021", 10));  // 10
 ```
 
-####当前对象
+#### 当前对象
 this的值是函数运行时决定的，而不是函数定时
 ```
     // 定义一个全局函数
@@ -32,7 +32,7 @@ this的值是函数运行时决定的，而不是函数定时
     pack.foo(); // "orange"
 ```
 
-####指定对象
+#### 指定对象
 使用**apply**或者**call**或者**bind**都用可以来改变this的值，不过**apply**和**call**是直接执行函数，而**bind**是返回一个新的函数对象。
 
 一句话区别**apply**和**call**的用法
@@ -184,7 +184,7 @@ JavaScript中的数据原型如字符串（String）、数字（Number）、数�
 
 ```
 
-###constructor
+### constructor
 
 constructor始终指向创建当前对象的构造函数
 
