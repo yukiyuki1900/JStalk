@@ -212,7 +212,7 @@ constructor始终指向创建当前对象的构造函数
     Person.prototype.getName = function() {
         return this.name;
     };
-    var p = new Person("haorooms");
+    var p = new Person("yuki");
 
     console.log(p.constructor === Person);  // true
     console.log(Person.prototype.constructor === Person); // true
@@ -231,7 +231,7 @@ constructor始终指向创建当前对象的构造函数
             return this.name;
         }
     };
-    var p = new Person("haorooms");
+    var p = new Person("yuki");
     console.log(p.constructor === Person);  // false
     console.log(Person.prototype.constructor === Person); // false
     console.log(p.constructor.prototype.constructor === Person); // false
@@ -258,7 +258,7 @@ constructor始终指向创建当前对象的构造函数
             return this.name;
         }
     };
-    var p = new Person("haorooms");
+    var p = new Person("yuki");
     console.log(p.constructor === Object);  // true
     console.log(Person.prototype.constructor === Object); // true
     console.log(p.constructor.prototype.constructor === Object); // true
@@ -276,7 +276,7 @@ constructor始终指向创建当前对象的构造函数
         }
     };
     Person.prototype.constructor = Person;
-    var p = new Person("haorooms");
+    var p = new Person("yuki");
     console.log(p.constructor === Person);  // true
     console.log(Person.prototype.constructor === Person); // true
     console.log(p.constructor.prototype.constructor === Person); // true
@@ -289,7 +289,7 @@ constructor始终指向创建当前对象的构造函数
         this.name = name;
     };
     Person.prototype = {
-      constructor:Person,//指定constructor
+        constructor: Person,//指定constructor
         getName: function() {
             return this.name;
         }
