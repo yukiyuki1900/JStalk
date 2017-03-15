@@ -109,4 +109,43 @@
 
 鉴于使用原型链带来的一些让人意想不到的“坑”，实现继承的时候往往会借用构造函数。
 
+其实就是在子类构造函数里调用父类构造函数，并且通过call()/apply()方法更改构造函数调用时的this环境，实现每次调用父类构造函数的都能创建一个新的实例，使得两个子类构造函数的实例继承的是不一样的父类构造函数实例。（说的就和绕口令一样/(ㄒoㄒ)/~~）
+
+不过呢，如果每次创建子实例的时候都要继承一个父实例，那继承不就没有意义了嘛！还不如直接把父构造函数的属性写在子构造函数里呢。这个时候，父构造函数就要结合prototype了，毕竟父实例是共享父构造函数的prototype的嘛~~（还是很绕啊肿么办~/(ㄒoㄒ)/~~）
+
+看下代码吧~~
+
+```
+    function Animal(age) {
+        this.age = age;
+        this.children = [];
+    };
+
+    Animal.prototype.getChildren = function() {
+        console.log(this.children);
+    }
+
+    function Person(name, age) {
+        //函数内调用父构造函数，继承父类构造函数内属性，还可以实现从子实例往父实例传参
+        Animal.call(this, age);
+
+        this.name = name;
+    };
+
+    Person.prototype.getName = function() {
+        return this.name;
+    };
+    
+    //继承父类prototype方法
+    Person.prototype = new Animal();
+
+    var person1 = new Person('Yuki', 18)
+    person1.children.push('Lily');
+    console.log(person2.children);   // ['Lily']
+    person1.getChildren();
+
+    var person2 = new Person('Jack', 20)
+    console.log(person2.children);   // []
+    person2.getChildren();
+```
 
