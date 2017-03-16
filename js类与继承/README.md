@@ -142,10 +142,11 @@
     var person1 = new Person('Yuki', 18)
     person1.children.push('Lily');
     console.log(person2.children);   // ['Lily']
-    person1.getChildren();
+    person1.getChildren();           // ['Lily']
 
     var person2 = new Person('Jack', 20)
     console.log(person2.children);   // []
-    person2.getChildren();
+    person2.getChildren();           // []
+
 ```
 
