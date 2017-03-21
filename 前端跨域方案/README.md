@@ -39,7 +39,8 @@ JSONP原理其实就是使用 **script** 标签，将参数和回调函数带到
 
 	//后端代码
 	<?php
-		if($params['callback'] && $this->isValidCallback($params['callback'])) $ret = $params['callback']."($ret)";
+		if($params['callback'] && $this->isValidCallback($params['callback'])) 
+			$ret = $params['callback']."($ret)";
 
 		header('Content-type:application/javascript');
 		echo $ret;
