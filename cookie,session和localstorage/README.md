@@ -17,8 +17,6 @@
 
 #### JS操作
 
-**document.cookie**
-
 在JS里可以通过**document.cookie**来获取cookie数据：
 
 ![image](https://github.com/yukiyuki1900/JStalk/blob/master/cookie%2Csession%E5%92%8Clocalstorage/cookie3.png)
