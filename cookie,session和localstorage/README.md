@@ -6,9 +6,9 @@
 
 **cookie**，即**HTTP Cookie**，其实是HTTP协议请求头的一个字段，打开浏览器，输入"www.baidu.com"，页面加载完后在Network里随便找到一个http请求，可以看到其中携带的cookie信息：
 
-![image]
+![image](https://github.com/yukiyuki1900/JStalk/blob/master/cookie%2Csession%E5%92%8Clocalstorage/cookie1.png)
 
-![image]
+![image](https://github.com/yukiyuki1900/JStalk/blob/master/cookie%2Csession%E5%92%8Clocalstorage/cookie2.png)
 
 ### sessionStorage
 
