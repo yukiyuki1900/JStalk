@@ -29,10 +29,13 @@ var CookieUtil = {
      * @description 设置cookie值
      * @param {String} name  cookie名   
      * @param {String} value  cookie值    
-     * @param {String} expires  失效时间 
+     * @param {Date} expires  失效时间 
      * @param {String} path  路径，就是对于指定域的路径
      * @param {String} domain  cookie生效的域，如果为空，则为设定cookie的域名 
      * @param {Boolean} secure  安全标志，指定之后，cookie只有在使用SSL连接的时候才发送到服务器 
+     *
+     * @example
+     *  CookieUtil.set("test", "lala", new Date("July 5, 2017"), "/test/", "www.test.com", true);
      *
      */
     set: function(name, value, expires, path, domain, secure) {
