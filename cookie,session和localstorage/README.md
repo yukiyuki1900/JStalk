@@ -25,22 +25,10 @@
 
 所以在读取或者写cookie的时候，因为js没有原生的接口来让我们直接操作，所以呢，为了方便开发，就需要咱们自己写了~
 
-读cookie：
-
-```
-```
-
-写cookie：
-
-```
-```
+具体情况[cookie.js](https://github.com/yukiyuki1900/JStalk/blob/master/cookie%2Csession%E5%92%8Clocalstorage/cookie.js)
 
 **通过document.cookie来配置cookie如果和原cookie的key相同，那原cookie的值就会被覆盖，否则原cookie的值不会被删除**
 
-删除cookie：
-
-```
-```
 
 ### sessionStorage
 
