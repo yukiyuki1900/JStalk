@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dom节点操作</title>
+</head>
+<body>
+    <div id="outer1"></div>
+    <div id="outer2">
+        <div id="inner"></div>
+    </div>
+
+    <script>
+        //查看子节点
+        console.log(document.body.childNodes);   //[div#outer1, div#outer2, script]
+
+        //查看子节点个数
+        console.log(document.body.childElementCount);   //3
+
+        //第一个节点
+        console.log(document.body.firstChild);   //#text
+
+        //第一个元素节点
+        console.log(document.body.firstElementChild);   //<div id="outer1"></div>
+
+        //最后一个节点
+        console.log(document.body.lastChild);   //#text
+
+        //最后一个元素节点
+        console.log(document.body.firstElementChild);   //<script>...</script>
+
+        //
+    </script>
+</body>
+</html>
