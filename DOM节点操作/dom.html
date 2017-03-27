@@ -27,9 +27,22 @@
         console.log(document.body.lastChild);   //#text
 
         //最后一个元素节点
-        console.log(document.body.firstElementChild);   //<script>...</script>
+        console.log(document.body.firstElementChild);   //<script>...
 
-        //
+        //创建新元素
+        var div = document.createElement('div');
+        div.id = "inner2";
+        div.className = "inner2class";
+        console.log(div);    // <div id=​"inner2" class=​"inner2class">​</div>​
+
+        //通过id查找元素，如果有多个元素有同样的id，则返回第一个
+        document.getElementById("outer2");   // <div id="outer2">...</div>
+
+        //通过tagname查找元素，返回HTMLCollection的对象实例，是一个类数组
+        document.getElementsByTagName('div');
+
+        //通过classname查找元素
+        document.getElementsByClassName('inner2class');
     </script>
 </body>
 </html>
