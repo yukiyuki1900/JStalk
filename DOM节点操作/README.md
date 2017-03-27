@@ -111,3 +111,15 @@ HTML的dom结构就和树结构一样，有父节点子节点和兄弟节点，D
     //用新的节点替换outer2的第一个子节点
     outer2.replaceChild(newNode, outer2.firstChild)
 ```
+
+复制节点：
+
+**cloneNode**可以用来做节点的复制，接受一个布尔值的参数，true的话就是深复制，false的话就是浅复制啦
+
+```
+    var deepNode = outer2.cloneNode(true);
+    deepNode.childNodes.length;   //3
+
+    var shallowNode = outer2.cloneNode(false);
+    shallowNode.childNodes.length;   //0
+```
