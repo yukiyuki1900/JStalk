@@ -91,7 +91,7 @@ HTML5中提供了window.postMessage这个API，可以用作客户端和客户端
 
 比如一个页面中一部分（如iframe）能拿到数据，另一个部分（如iframe的parent，也就是iframe的父节点）没法拿到这部分数据，但是却需要用到，此时便可以使用postMessage来将这部分数据传给页面的这个部分。所以可以用postMessage来跨域在不同窗口/iframe间发送数据。
 
-####实现
+#### 实现
 
 比如现在有个页面里内嵌了一个iframe
 ```
