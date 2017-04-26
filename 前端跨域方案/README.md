@@ -65,7 +65,7 @@ JSONP原理其实就是使用 **script** 标签可以链接到不同域名的js�
 
 **但是JSONP有个硬伤，只能接受get请求，所以对一些最好使用post的接口，比如会写入数据库的接口，并不是很好。**
 
-###IFRAME
+### IFRAME
 
 #### 原理
 window对象有个name属性，该属性有个特征：即在一个窗口(window)的生命周期内,窗口载入的所有的页面都是共享一个window.name的，每个页面对window.name都有读写的权限，window.name是持久存在一个窗口载入过的所有页面中的。
