@@ -78,7 +78,56 @@ ES6是ECMA Script6的缩写，也就是JavaScript的第6个版本标准，因为
 			console.log(i);
 		}
 	}
-	a[6]();   //10
+	a[6]();   //6
+```
+
+#### 箭头函数
+在es6，arrow是一个函数声明的简洁快捷的语法方式。
+
+```
+	function(i){ return i + 1; } //ES5
+	(i) => i + 1 //ES6
+```
+
+是不是超级方便？通过使用**=>**就能完成一个函数的声明。
+
+```
+	// ES5实现
+	nums.forEach(function (v) {
+	   if (v % 5 === 0)
+	       fives.push(v);
+	});
+
+	// ES6实现
+	nums.forEach(v => {
+	   if (v % 5 === 0)
+	       fives.push(v)
+	})
+```
+
+需要注意的是，在arrow function里的this指向的是定义时所在的对象哦，举个例子，比如在setTimeout或forEach等函数内部，this指向的是全局变量window，传统的解决方案要不就是在函数将this传给一个变量，要不就是将this作为参数传入函数内。
+
+```
+	// ES5实现
+	// 实现一
+	var self = this;
+	this.nums.forEach(function (v) {
+	    if (v % 5 === 0)
+	        self.fives.push(v);
+	});
+
+	// 实现二
+	this.nums.forEach(function (v) {
+	    if (v % 5 === 0)
+	        this.fives.push(v);
+	}, this);
+
+
+	// ES6实现
+	this.nums.forEach((v) => {
+	    if (v % 5 === 0)
+	        this.fives.push(v)
+	})
 ```
 
 #### destructuring(解构)
@@ -166,54 +215,6 @@ ES6是ECMA Script6的缩写，也就是JavaScript的第6个版本标准，因为
 	`);
 ``
 
-#### arrow function
-在es6，arrow是一个函数声明的简洁快捷的语法方式。
-
-```
-	function(i){ return i + 1; } //ES5
-	(i) => i + 1 //ES6
-```
-
-是不是超级方便？通过使用**=>**就能完成一个函数的声明。
-
-```
-	// ES5实现
-	nums.forEach(function (v) {
-	   if (v % 5 === 0)
-	       fives.push(v);
-	});
-
-	// ES6实现
-	nums.forEach(v => {
-	   if (v % 5 === 0)
-	       fives.push(v)
-	})
-```
-
-需要注意的是，在arrow function里的this指向的是定义时所在的对象哦，举个例子，比如在setTimeout或forEach等函数内部，this指向的是全局变量window，传统的解决方案要不就是在函数将this传给一个变量，要不就是将this作为参数传入函数内。
-
-```
-	// ES5实现
-	// 实现一
-	var self = this;
-	this.nums.forEach(function (v) {
-	    if (v % 5 === 0)
-	        self.fives.push(v);
-	});
-
-	// 实现二
-	this.nums.forEach(function (v) {
-	    if (v % 5 === 0)
-	        this.fives.push(v);
-	}, this);
-
-
-	// ES6实现
-	this.nums.forEach((v) => {
-	    if (v % 5 === 0)
-	        this.fives.push(v)
-	})
-```
 
 ### 参考材料
 * [http://es6-features.org](http://es6-features.org/#StatementBodies)
