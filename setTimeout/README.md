@@ -39,7 +39,7 @@ setTimeout(function() {
 }, 0);
 
 console.log(222);
-``
+```
 
 输出是 
 ```
