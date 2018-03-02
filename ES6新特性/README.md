@@ -82,7 +82,7 @@ ES6是ECMA Script6的缩写，也就是JavaScript的第6个版本标准，因为
 ```
 
 #### 箭头函数
-在es6，arrow是一个函数声明的简洁快捷的语法方式。
+在es6，arrow是一个函数声明的语法糖。
 
 ```
 	function(i){ return i + 1; } //ES5
@@ -138,6 +138,7 @@ ES6是ECMA Script6的缩写，也就是JavaScript的第6个版本标准，因为
 		let { id, status, data: number } = json;
 		console.log(id, status, number);
 		// 42, OK, [867, 5309]
+		//data: num 即将data值赋值给number，此时相当于let num = json.data,同样也可以let {id: id1, status: status1} = json
 	}
 
 	mangle({ 
