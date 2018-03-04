@@ -2,14 +2,14 @@
 
 常用函数啊...
 
-###数组创建
+### 数组创建
 ```
 	var arr = new Array();
 	var arr1 = new Array('a', 'b');
 	var arr2 = ['a', 'b'];
 ```
 
-###增加数组元素
+### 增加数组元素
 注意以下操作原数组会发生改变
 ```
 	var arr = ['a', 'b', 'c'];
@@ -19,7 +19,7 @@
 ```
 ![image](https://github.com/yukiyuki1900/JStalk/blob/master/array%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E4%B8%8E%E6%8A%80%E5%B7%A7/arr_add.png)
 
-###删除数组元素
+### 删除数组元素
 注意以下操作原数组会发生改变
 ```
 	var arr = ['a', 'b', 'c', 'd'];
@@ -29,7 +29,7 @@
 ```
 ![image](https://github.com/yukiyuki1900/JStalk/blob/master/array%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E4%B8%8E%E6%8A%80%E5%B7%A7/arr_del.png)
 
-###数组截取与合并
+### 数组截取与合并
 注意以下操作都不会改变原数组
 ```
 	var arr = ['a', 'b', 'c', 'd'];
@@ -41,7 +41,7 @@
 ```
 ![image](https://github.com/yukiyuki1900/JStalk/blob/master/array%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E4%B8%8E%E6%8A%80%E5%B7%A7/arr_con.png)
 
-###数组的排序
+### 数组的排序
 注意以下操作原数组会发生改变
 ```
 	var arr = [1, 2, 3, 4];
@@ -59,7 +59,7 @@
 	arr.length = 0;
 ```
 
-###遍历数组
+### 遍历数组
 ```
 	var arr = ['a', 'b', 'c', 'd'];
 	//方法一
@@ -103,3 +103,74 @@
 
 ```
 
+### 区分数组和Object的几种方法
+
+执行以下代码：
+
+```
+	var arr = [];
+	console.log(typeof arr);   // 'object'
+```
+
+可以看到返回的是'object'，原因是数组本身就是一个对象。那应该如何区分Array和Object呢？
+
+第一反应是可以用数组自带的函数和属性，比如length,concat,pop等上文涉及到的一些函数，但是请注意，在object里，属性是可以定义的。如果给object定义一个length或者concat,pop之类的属性，那岂不是没法区分了？
+
+以下是几种区分的方法：
+
+```
+	1. isArray
+	es5新增的检测数组的方法：Array.isArray()
+
+	var arr = [];
+	console.log(Array.isArray(arr));   // true
+
+
+	2. constructor
+	通过构造函数可以判断是否为数组
+
+	var arr = [];
+	console.log(arr.constructor === Array);   // true
+
+	不过因为构造函数可以被改写，所以不能确保，如：
+
+	var str = '';
+	str.constructor = Array;
+	console.log(str.constructor === Array);   // true
+
+	可是str并不是数组
+
+
+	3. instanceof
+	instanceof检测的是变量是检测的constructor,注意数组的constructor既是'Array'，也是'Object'
+
+	var arr = [];
+	console.log(arr instanceof Array);   // true
+	console.log(arr instanceof Object);   // true
+
+	同constructor方法，因为constructor会被改写，所以也不能确保。
+
+
+	4. prototype
+	通过 Object.prototype.toString.call方法，能够稳妥的判断是否是数组
+
+	var arr = [];
+	console.log(Object.prototype.toString.call(arr) === '[object Array]')   // true
+
+```
+
+### 查找数组最大最小值
+
+最常见的数组的最大最小值，可以很简单的用遍历找出。
+
+但是如果不使用遍历呢？
+
+```
+	var arr = [1,3,4,5,1,5];
+
+	// 查找最大值
+	Math.max.apply(this, arr);  // 5
+
+	//查找最小值
+	Math.min.apply(this, arr);  // 1
+```
