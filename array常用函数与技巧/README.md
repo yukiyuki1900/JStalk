@@ -157,6 +157,8 @@
 	var arr = [];
 	console.log(Object.prototype.toString.call(arr) === '[object Array]')   // true
 
+	将类数组转成数组方法可见[函数内属性arguments](https://github.com/yukiyuki1900/JStalk/tree/master/%E5%87%BD%E6%95%B0%E5%86%85%E5%B1%9E%E6%80%A7arguments)
+
 ```
 
 ### 查找数组最大最小值

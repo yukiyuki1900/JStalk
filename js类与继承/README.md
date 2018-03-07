@@ -17,7 +17,7 @@
 
 在上述例子里，由于prototype被重新赋值为新对象，所以自然**constructor**属性也就变成新对象的**constructor**属性（指向Object构造函数）
 
-![image](https://github.com/yukiyuki1900/JStalk/blob/master/js%E7%B1%BB%E4%B8%8E%E7%BB%A7%E6%89%BF/jicheng1.png)
+![./jicheng1.png](./jicheng1.png)
 
 如果**constructor**值很重要，那就在**prototype**里将**constructor**赋值为**Person**就好了
 
@@ -34,7 +34,7 @@
     };
 ```
 
-![image](https://github.com/yukiyuki1900/JStalk/blob/master/js%E7%B1%BB%E4%B8%8E%E7%BB%A7%E6%89%BF/jicheng2.png)
+![./jicheng2.png](./jicheng2.png)
 
 ### 原型链
 

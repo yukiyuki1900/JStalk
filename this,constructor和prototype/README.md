@@ -7,7 +7,7 @@ this表示当前的对象，可是由于    其运行时绑定的原因，JavaSc
 ```
     console.log(this === window);  // true
     console.log(window.alert === this.alert);  // true
-    console.log(this.parseInt("021", 10));  // 10
+    console.log(this.parseInt("021", 10));  // 21
 ```
 
 #### 当前对象
@@ -60,8 +60,7 @@ foo.call(this, arg1,arg2,arg3) == foo.apply(this, arguments)==this.foo(arg1, arg
     foo.apply(window);  // "apple"
     // 此时foo中的this === pack
     foo.apply(pack);    // "orange"
-    // 此时foo中的this === pack
-    foo.apply(call);    // "orange"
+
 ```
 
 从第二个参数起, call方法参数将依次传递给借用的方法作参数, 而apply直接将这些参数放到一个数组中再传递, 最后借用方法的参数列表是一样的。
